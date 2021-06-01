@@ -1,0 +1,31 @@
+<%- include("header") -%>
+
+<div class="lists">
+    <a href="/" class="diffList"><img src="images/calendar.svg" alt=""></a>
+    <a href="/family" class="diffList"><img src="images/family.svg" alt=""></a>
+    <a href="/skill" class="diffList"><img src="images/skill.svg" alt=""></a>
+    <a href="/me" class="diffList"><img src="images/flower.svg" alt=""></a>
+</div>
+<div class="box" id="heading">
+    <h1><%= listTitle %></h1>
+</div>
+
+<div class="box">
+    <% for(var i= 0; i < itemToAdd.length; i++) { %>
+    <form action="/delete" method="POST">
+        <div class="item">
+            <input name="checkbox" value="<%= itemToAdd[i].id %>" type="checkbox" onChange="this.form.submit()">
+            <input name="listName" value="<%= listTitle %>" class="dummyP"></button>
+            <p> <%= itemToAdd[i].name; %> </p>
+        </div>
+    </form>
+
+    <% } %>
+
+    <form class="item" action="/" method="POST">
+        <input type="text" name="newItem" placeholder="Enter new item" autocomplete="off">
+        <button type="submit" name="submit" value="<%= listTitle %>">+</button>
+    </form>
+</div>
+
+<%- include("footer") -%>
